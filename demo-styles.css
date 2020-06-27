@@ -2,12 +2,13 @@ body {
   margin: 1em;
   padding: 0;
   font-family: Google Sans, Noto, Roboto, Helvetica Neue, sans-serif;
-  color: red;
+  color: #284373;
   text-align: right;
 }
 
 #card {
   margin: 3em auto;
+  color: none;
   display: flex;
   flex-direction: column;
   max-width: 800px;
