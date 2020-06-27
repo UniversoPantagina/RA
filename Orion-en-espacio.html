@@ -1,0 +1,159 @@
+<head>
+    <title>&lt;Orión&gt; Constelación de Orión</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="demo-styles.css">
+
+    <!-- The following libraries and polyfills are recommended to maximize browser support -->
+    <!-- NOTE: you must adjust the paths as appropriate for your project -->
+
+    <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.1.3/webcomponents-loader.js"></script>
+    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+    <script src="https://unpkg.com/resize-observer-polyfill@1.5.0/dist/ResizeObserver.js"></script>
+    <script src="https://unpkg.com/fullscreen-polyfill@1.0.2/dist/fullscreen.polyfill.js"></script>
+    <script src="https://unpkg.com/@magicleap/prismatic/prismatic.min.js"></script>
+    <script src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js" defer=""></script>
+  
+
+  </head>
+
+
+<body>
+    <script>
+      function Sync(selector, audioSelector) {
+        var modelViewer = document.querySelector(selector);
+        var sound = document.querySelector(audioSelector);
+        var playRequest = document.querySelector("#overlay");
+
+        sound.addEventListener("timeupdate", () => {
+          modelViewer.currentTime = sound.currentTime;
+          console.log("modelViewer time: " + modelViewer.currentTime);
+        });
+
+        sound.addEventListener("pause", () => {
+          modelViewer.pause();
+        });
+
+        sound.addEventListener("play", () => {
+          modelViewer.play();
+
+          playRequest.classList.add("hide");
+        });
+
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState !== "visible") {
+            sound.pause();
+          }
+        });
+
+        var promise = sound.play();
+        if (promise !== undefined) {
+          promise
+            .then(_ => {
+              console.log("Autoplay has worked");
+              playRequest.classList.add("hide");
+            })
+            .catch(error => {
+              // Show a "Play" button so that user can start playback.
+              console.log("Autoplay has not worked");
+
+              // show the modal dialogue to play this
+              playRequest.classList.remove("hide");
+            });
+        }
+
+        // this is needed because modelViewer.currentTime does not update when paused
+        // https://github.com/google/model-viewer/issues/1113
+        function enforceTime() {
+          if (modelViewer === undefined)
+            modelViewer = document.querySelector(selector);
+
+          if (sound.paused) modelViewer.currentTime = sound.currentTime;
+
+          // need to enforce play
+          if (modelViewer.paused && typeof modelViewer.play === "function")
+            modelViewer.play();
+
+          requestAnimationFrame(enforceTime);
+        }
+
+        requestAnimationFrame(enforceTime);
+      }
+
+      function playNow() {
+        var playRequest = document.querySelector("#overlay");
+        playRequest.classList.add("hide");
+
+        var sound = document.querySelector("#sound");
+        sound.play();
+      }
+
+      function jumpTo(time) {
+        var sound = document.querySelector("#sound");
+        sound.currentTime = time;
+      }
+    </script>
+
+    <div id="overlay" class="show hide">
+      <div id="request-press-play">
+        <button onclick="playNow()">
+         Presiona para escuchar<br>
+        </button>
+      </div>
+    </div>
+
+    <div id="card">
+      <!-- All you need to put beautiful, interactive 3D content on your site: -->
+      <!--  <model-viewer src="https://cdn.glitch.com/634db0ee-0ba9-4b25-a608-2841a00f23c6%2Fpinguino%20GLB.glb?v=1589841261923" ios-src="https://cdn.glitch.com/634db0ee-0ba9-4b25-a608-2841a00f23c6%2FPing%C3%BCino%20IOS.reality?v=1589841278950" alt="Un modelo 3D de un pingüino" background-color="#BFFCFF" shadow-intensity="1" camera-controls="" interaction-prompt="auto" auto-rotate="" autoplay="" ar="" magic-leap="" id="model-viewer" data-js-focus-visible="">
+      </model-viewer>-->
+      
+      <model-viewer 
+                    src="https://cdn.glitch.com/c0f22d7f-c8af-49d6-8b77-6995852ed7bd%2FGEMINISGLB3.glb?v=1593249196781?sound=https://universopantagina.github.io/RA/recursos/musica/musicaSol.mp3&amp" 
+                    
+                    alt="Constelación de Orión" 
+                    background-color="#70BCD1" 
+                    shadow-intensity="1" 
+                    camera-controls="" 
+                    interaction-prompt="auto" 
+                    
+                    autoplay="" 
+                    ar="" 
+                    magic-leap="" 
+                    id="model-viewer" 
+                    data-js-focus-visible="">
+      </model-viewer>
+      
+      <section class="attribution">
+        <div>
+          <span> <h1>Constelación de Géminis</h1> 
+            <span><h3 align="left">Sub título</h3> 
+              <span> <p align="justify">Información sobre la constelación </p> </span>
+            <span><audio controls="" autoplay="" loop="" id="sound">
+                <source src="https://universopantagina.github.io/RA/recursos/musica/musicaSol.mp3" type="audio/mpeg"> </audio></span>
+         </span>
+            
+            </span>
+        </div>
+        <div id="timesteps">
+          <button onclick="jumpTo(0)">0s</button>
+          <button onclick="jumpTo(5)">5s</button>
+          <button onclick="jumpTo(10)">10s</button>
+          <button onclick="jumpTo(15)">15s</button>
+          <button onclick="jumpTo(20)">20s</button>
+        </div>
+      </section>
+
+      <script>
+        window.addEventListener("load", () => {
+          Sync("#model-viewer", "#sound");
+        });
+      </script>
+    </div>
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer.js"></script>
+    <script nomodule="" src="https://unpkg.com/@google/model-viewer@v0.8.0/dist/model-viewer-legacy.js"></script>
+  
+
+</body>
