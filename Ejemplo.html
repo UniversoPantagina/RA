@@ -83,22 +83,47 @@
       smoothtolerance="0.01"
       smooththreshold="5"
     >
-      <a-video src="#vid" position="50 150 -100" width="300" height="175">
+      
+      
+      <!-- Por defecto, los objetos 3D se posicionan en la esquina inferior izquierda -->
+      <!-- POSITION Si el teléfono está horizontal (x (horizontal y positivo a la derecha), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- Si el teléfono está vertical (x, y, z) por definir -->
+      <a-video 
+               src="#vid"
+               rotation="270 0 0"
+               scale="1.7 1.7 1.7"
+               position="450 100 -220"
+               
+               width="300" 
+               height="175">
       </a-video>
       
       
       
-      
-      
+      <!-- Por defecto, los objetos 3D se posicionan en la esquina inferior izquierda -->
+      <!-- POSITION Si el teléfono está horizontal (x (horizontal y positivo a la derecha), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- ROTATION Si el teléfono está horizontal (x (rota en torno al eje X), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- Si el teléfono está vertical (x, y, z) -->
          <a-entity
 		            gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/modelos/AntenaGLTF.gltf"
-		      		  scale="20 20 20"
-                position="200 -10 -10"
-                rotation="-90 0 0"
+		      		  scale="4 4 4"
+                
+                position="650 100 -50"
+                   
+                rotation="0 0 0"
 				      		                >
             </a-entity>
       
       
+      <a-entity
+		            gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/modelos/AntenaGLTF.gltf"
+		      		  scale="4 4 4"
+                
+                position="300 100 -50"
+                   
+                rotation="0 0 0"
+				      		                >
+            </a-entity>
       
       
       
