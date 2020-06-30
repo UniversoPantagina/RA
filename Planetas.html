@@ -1,0 +1,128 @@
+<script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+
+
+
+<style>
+	
+  .button 
+	{ background-color:#FB9214;
+	  border: none;
+	  color: white;
+	  padding: 1.4%;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 100%;
+	  margin: 4px 2px;
+	  cursor: pointer; 
+	  border-radius: 12px;
+	  border: 2px solid #rgba(9, 148, 28, 0.541);
+	  box-shadow: 0 8px 12px #rgba(0, 0, 0, 0.2), 0 6px 20px 0 #rgba(0, 0, 0, 0.19);}
+  	
+   .wrap { border: solid 1px #ccc;
+	   padding: 10px;
+	   text-align: center;}
+	
+  #output {
+    display: inline-block;
+	  top: 4px;
+	  position: relative;
+	  border: dotted 1px #ccc;
+	  padding: 2px;}
+	
+  .button {
+	  border: solid 2px #ccc;
+	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+  .arjs-loader {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .arjs-loader div {
+    text-align: center;
+    font-size: 1.25em;
+    color: white;
+  }
+</style>
+
+<!-- rawgithack development URL -->
+
+
+<body style='margin : 0px; overflow: hidden;'>
+   <!-- minimal loader shown until image descriptors are loaded -->
+  <div class="arjs-loader">
+    <div>Cargando Sol ...</div>
+  </div>
+
+	
+	
+	
+	
+	
+	
+	
+	
+<div style='position: absolute; right: 5%; left: 0%; down: 0%; top: 75%; width: 100%; text-align: center; z-index: 1;'>
+    
+     <a href="https://universopantagina.github.io/RA/Sol-en-espacio.html" class="button" id="btn1">Ver en tu entorno</a>
+	 
+  </div>
+
+
+	
+	
+	
+	
+	
+	
+	
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'>
+
+        <!-- use rawgithack to retrieve the correct url for nft marker (see 'trex' below) -->
+        <a-nft
+	    type='nft' 
+	    url='https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/dataNFT/Gaseosos2'
+            smooth='true' 
+	    smoothCount='10' 
+	    smoothTolerance='0.01' 
+	    smoothThreshold='5'>
+		
+            <a-entity
+		
+                gltf-model="https://cdn.glitch.com/7a364c6d-97de-4fea-94bb-985b2f3f039a%2FPlanetasEscalas4.gltf?v=1593475448687"
+		      		      
+                scale="70 70 70"
+                position="90 -80 -10"
+		
+		      
+		                >
+            </a-entity>
+        </a-nft>
+		<a-entity camera></a-entity>
+    </a-scene>
+</body>
