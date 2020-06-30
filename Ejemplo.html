@@ -47,12 +47,18 @@
     font-size: 1.25em;
     color: white;
   }
+  
+  
+    
+  
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
   <div class="arjs-loader">
-    <div>Cargando video aumentado </div>
+    <div>Cargando video aumentado... </div>
   </div>
+  
+  
   <a-scene
     vr-mode-ui="enabled: false;"
     renderer="antialias: true; alpha: true; precision: mediump;"
@@ -61,7 +67,7 @@
   >
     <a-assets>
       <video
-        src="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/recursos/videos/VIDEO_SOLMP4.mp4"
+        src="https://cdn.glitch.com/1ca8bee1-da0c-4b45-af92-5933f5df07c1%2FSOLAORBITERVIDEO.mp4?v=1593388556717"
         preload="auto"
         id="vid"
         response-type="arraybuffer"
@@ -71,13 +77,14 @@
         autoplay
         
         playsinline
-      ></video>
+        
+                 ></video>
     </a-assets>
 
     <a-nft
       videohandler
       type="nft"
-      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/dataNFT/SOLEJEMPLO1"
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/dataNFT/SORBITER2"
       smooth="true"
       smoothcount="10"
       smoothtolerance="0.01"
@@ -91,11 +98,14 @@
       <a-video 
                src="#vid"
                rotation="270 0 0"
-               scale="1.7 1.7 1.7"
-               position="250 100 -220"
+               scale="1 1 1"
+               position="200 130 -220"
                
                width="300" 
-               height="175">
+               height="175"
+               
+              
+               >
       </a-video>
       
       
@@ -105,25 +115,21 @@
       <!-- ROTATION Si el teléfono está horizontal (x (rota en torno al eje X), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
       <!-- Si el teléfono está vertical (x, y, z) -->
          <a-entity
-		            gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/modelos/AntenaGLTF.gltf"
-		      		  scale="4 4 4"
+		            gltf-model="https://cdn.glitch.com/1ca8bee1-da0c-4b45-af92-5933f5df07c1%2FSOLAR_ORBITER_GLTF.gltf?v=1593388083576"
+		      		  scale="10 10 10"
                 
-                position="450 100 -50"
+                position="0 290 0"
                    
-                rotation="0 0 0"
+                rotation="270 75 180"
+                a-light="type:point; color:white; position:100 250 -200" 
+                   
+                animation="property: position; repeat: indefinite; easing: linear; loop: true;to: -550 270 -250; from: 550 270 -380; dur: 17000"
+                   
 				      		                >
             </a-entity>
       
       
-      <a-entity
-		            gltf-model="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/modelos/AntenaGLTF.gltf"
-		      		  scale="4 4 4"
-                
-                position="100 100 -50"
-                   
-                rotation="0 0 0"
-				      		                >
-            </a-entity>
+      
       
       
       
