@@ -1,17 +1,6 @@
-<head>
-    <title>&lt;Castor y Polux&gt; Constelación de Géminis</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="demo-styles.css">
- 
 <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
+
 <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
-</head>
-
-
-
 <script>
   window.onload = function() {
     AFRAME.registerComponent("videohandler", {
@@ -58,12 +47,18 @@
     font-size: 1.25em;
     color: white;
   }
+  
+  
+    
+  
 </style>
 
 <body style="margin : 0px; overflow: hidden;">
   <div class="arjs-loader">
-    <div>Cargando video aumentado </div>
+    <div>Cargando video aumentado... </div>
   </div>
+  
+  
   <a-scene
     vr-mode-ui="enabled: false;"
     renderer="antialias: true; alpha: true; precision: mediump;"
@@ -82,29 +77,72 @@
         autoplay
         
         playsinline
-      ></video>
+        
+                 ></video>
     </a-assets>
 
     <a-nft
       videohandler
       type="nft"
-      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/YhonLimon/jhon-interactivity-AR/master/resources/dataNFT/earthTexture"
+      url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/UniversoPantagina/RA/master/recursos/dataNFT/Vela2"
       smooth="true"
       smoothcount="10"
       smoothtolerance="0.01"
       smooththreshold="5"
     >
+      
+      
+      <!-- Por defecto, los objetos 3D se posicionan en la esquina inferior izquierda -->
+      <!-- POSITION Si el teléfono está horizontal (x (horizontal y positivo a la derecha), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- Si el teléfono está vertical (x, y, z) por definir -->
       <a-video 
-        src="#vid" 
-        position="0 10 0"
-        rotate="0 90 0"
-        width="300" 
-        height="175"
+               src="#vid"
+               rotation="270 0 0"
+               scale="1 1 1"
+               position="200 130 -220"
+               
+               width="300" 
+               height="175"
+               
               
                >
-          
       </a-video>
+      
+      
+      
+      <!-- Por defecto, los objetos 3D se posicionan en la esquina inferior izquierda -->
+      <!-- POSITION Si el teléfono está horizontal (x (horizontal y positivo a la derecha), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- ROTATION Si el teléfono está horizontal (x (rota en torno al eje X), z (profundidad y positivo saliente), y (vertical y positivo abajo)) -->
+      <!-- Si el teléfono está vertical (x, y, z) -->
+         <a-entity
+		            gltf-model="https://cdn.glitch.com/1ca8bee1-da0c-4b45-af92-5933f5df07c1%2FSOLAR_ORBITER_GLTF.gltf?v=1593388083576"
+		      		  scale="10 10 10"
+                
+                position="0 290 0"
+                   
+                rotation="270 75 180"
+                a-light="type:point; color:white; position:100 250 -200" 
+                   
+                animation="property: position; repeat: indefinite; easing: linear; loop: true;to: -550 270 -250; from: 550 270 -380; dur: 17000"
+                   
+				      		                >
+            </a-entity>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
     </a-nft>
     <a-entity camera></a-entity>
   </a-scene>
 </body>
+
+
+
