@@ -8,7 +8,7 @@ body {
 }
 
 #card {
-  margin: -10em auto;
+  margin: -5em auto;
   color: none;
   display: flex;
   flex-direction: column;
